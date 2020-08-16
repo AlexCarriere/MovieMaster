@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="seatSelectionStyles.css">
+    <link rel="stylesheet" type="text/css" href="ShoppingCart.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Movie Master</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theatrePage.html">Theatres</a></li>
+                <li class="active"><a href="moviePage.html">Movies</a></li>
+                <li><a href="concessionPage.html">Concessions</a></li>
+            </ul>
+
+            <!-- For the Signup and Login nav bar. No html link included yet -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a data-toggle="modal" href="#checkOutModal"><span class="glyphicon glyphicon-shopping-cart"></span> Your Cart</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <div class="moviePoster">
+            <img src="./images/theGrinchimg.jpg" alt="moviePoster" style="width:312px;height:468px;">
+        </div>
+
+        <div class="movieTitle">
+            <h1>The Grinch</h1>
+        </div>
+
+        <br> <br> <br> <br>
+
+        <div class="movieDescription">
+            <p>
+                <h5>Rating: PG 13</h5>
+                <h5>Length: 1h 26m</h5>
+                <h5>Director(s): Yarrow Cheney, and Scott Mosier</h5>
+                <h5>Featuring: Benedict Cumberbatch, Cameron Seely, and Rashida Jones</h5>
+                In the town of Whoville, human-like creatures called Whos are filled with excitement about celebrating Christmas. The only one who isn't amused is a cantankerous, green furred creature called The Grinch, who has a heart "two sizes too small"
+                and lives in a cave on the top of Mount Crumpit just north of Whoville. The Grinch's only friend is his loyal pet dog Max and they both only visit Whoville when the Grinch needs to buy food and do bad things.
+            </p>
+        </div>
+
+        <!-- Movie Theatre and Time Labels.
+			If anyone knows a prettier way of doing this let me know -->
+      <div class="movieDetails">
+
+          <div>
+              <b>Theatres:</b>
+              <!-- Theatre selection-->
+              <div class="theatreSpinner">
+                  <select id="movieTheatres" onchange="loadMovieTimes()">
+                      <option value="Polo Park">Polo Park</option>
+                      <option value="Grant Park">Grant Park</option>
+                      <option value="Kildonan Place">Kildonan Place</option>
+                      <option value="St.Vital">St.Vital Center</option>
+                  </select>
+              </div>
+          </div>
+          <div>
+              <b>Time:</b>
+              <!-- Time seleltion -->
+              <div class="timeSpinner">
+                  <select id="movieTime">
+                  </select>
+              </div>
+          </div>
+
+          <div class="viewSeats">
+              <button id="viewSeats" type="butt=sleon" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                  View Available Seats
+              </button>
+          </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <!-- all of the modal stuff
+        Note if you want a smaller modal get rid of "modal-lg"-->
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <!-- Seat Selector Starts here -->
+                    <exit>
+                        <button id="exit" type="button" data-toggle="modal" class="exitButton" data-target="#myModal"><b>X</b></button>
+                    </exit>
+
+                    <!-- Drawing the side bar
+              Pictures was the easiest, least frustrating way to get this done-->
+                    <sidebar>
+                        <div align="center">
+                            <br> <br> <br>
+                            <img src="./images/empty.png" alt="empty seat" style="width:100px;height:100px;">
+                            <br>
+                            <b>Available</b>
+                            <br> <br>
+                            <img src="./images/taken.png" alt="empty seat" style="width:100px;height:100px;">
+                            <br>
+                            <b>Unavailable</b>
+                            <br> <br>
+                            <img src="./images/handi.png" alt="empty seat" style="width:100px;height:100px;">
+                            <br>
+                            <b>Handicap Seat</b>
+                            <br> <br> <br> <br>
+
+                        </div>
+                    </sidebar>
+
+
+                    <!-- Drawing the Theatre -->
+                    <picker>
+                        <div class="theatre">
+                            <div class="screen">
+                                <h1> S C R E E N </h1>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="viewingArea">
+                                <!-- Each row is a list, and all the rows together are a list-->
+                                <li>
+                                    <ol class="seats" type="A">
+                                        <li class="seat">
+                                            <input type="checkbox" id="00" onclick="updateSeatTotal('00')" />
+                                            <label for="00" class="seatImage">1A</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="01" onclick="updateSeatTotal('01')" />
+                                            <label for="01" class="seatImage">1B</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="02" onclick="updateSeatTotal('02')" />
+                                            <label for="02" class="seatImage">1C</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="03" onclick="updateSeatTotal('03')" />
+                                            <label for="03" class="seatImage">1D</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="04" onclick="updateSeatTotal('04')" />
+                                            <label for="04" class="seatImage">1E</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="05" onclick="updateSeatTotal('05')" />
+                                            <label for="05" class="seatImage">1F</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="06" onclick="updateSeatTotal('06')" />
+                                            <label for="06" class="handiSeat">1G</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="07" onclick="updateSeatTotal('07')" />
+                                            <label for="07" class="handiSeat">1H</label>
+                                        </li>
+                                    </ol>
+                                    <ol class="seats" type="A">
+                                        <li class="seat">
+                                            <input type="checkbox" id="10" onclick="updateSeatTotal('10')" />
+                                            <label for="10" class="seatImage">2A</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="11" onclick="updateSeatTotal('11')" />
+                                            <label for="11" class="seatImage">2B</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="12" onclick="updateSeatTotal('12')" />
+                                            <label for="12" class="seatImage">2C</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="13" onclick="updateSeatTotal('13')" />
+                                            <label for="13" class="seatImage">2D</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="14" onclick="updateSeatTotal('14')" />
+                                            <label for="14" class="seatImage">2E</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="15" onclick="updateSeatTotal('15')" />
+                                            <label for="15" class="seatImage">2F</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="16" onclick="updateSeatTotal('16')" />
+                                            <label for="16" class="seatImage">2G</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="17" onclick="updateSeatTotal('17')" />
+                                            <label for="17" class="seatImage">2H</label>
+                                        </li>
+                                    </ol>
+                                    <ol class="seats" type="A">
+                                        <li class="seat">
+                                            <input type="checkbox" id="20" onclick="updateSeatTotal('20')" />
+                                            <label for="20" class="seatImage">3A</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="21" onclick="updateSeatTotal('21')" />
+                                            <label for="21" class="seatImage">3B</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="22" onclick="updateSeatTotal('22')" />
+                                            <label for="22" class="seatImage">3C</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="23" onclick="updateSeatTotal('23')" />
+                                            <label for="23" class="seatImage">3D</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="24" onclick="updateSeatTotal('24')" />
+                                            <label for="24" class="seatImage">3E</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="25" onclick="updateSeatTotal('25')" />
+                                            <label for="25" class="seatImage">3F</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="26" onclick="updateSeatTotal('26')" />
+                                            <label for="26" class="seatImage">3G</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="27" onclick="updateSeatTotal('27')" />
+                                            <label for="27" class="seatImage">3H</label>
+                                        </li>
+                                    </ol>
+                                    <ol class="seats" type="A">
+                                        <li class="seat">
+                                            <input type="checkbox" id="30" onclick="updateSeatTotal('30')" />
+                                            <label for="30" class="seatImage">4A</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="31" onclick="updateSeatTotal('31')" />
+                                            <label for="31" class="seatImage">4B</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="32" onclick="updateSeatTotal('32')" />
+                                            <label for="32" class="seatImage">4C</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="33" onclick="updateSeatTotal('33')" />
+                                            <label for="33" class="seatImage">4D</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="34" onclick="updateSeatTotal('34')" />
+                                            <label for="34" class="seatImage">4E</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="35" onclick="updateSeatTotal('35')" />
+                                            <label for="35" class="seatImage">4F</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="36" onclick="updateSeatTotal('36')" />
+                                            <label for="36" class="seatImage">4G</label>
+                                        </li>
+                                        <li class="seat">
+                                            <input type="checkbox" id="37" onclick="updateSeatTotal('37')" />
+                                            <label for="37" class="seatImage">4H</label>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </div>
+                        </div>
+                    </picker>
+
+                    <!-- Add to Cart Button -->
+                    <footer>
+                        <b>
+                            <h4 id=tempTotal>Total: $0</h4>
+                        </b>
+                        <button type="button" class="cartButton btn" data-toggle="modal" data-target="#myModal" onclick="add()">Add to Cart</button>
+                    </footer>
+
+                    <script type="text/javascript" src="grinchSeatSelection.js"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="checkOutModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Your Cart</h2>
+                </div>
+                <div class="modal-body">
+                    <div id="shoppingCart" class="modalScrollMenu checkoutModal" style="height:250px;"></div>
+                    <div>
+                        <div>
+                            <ul class="checkoutModal">
+                                <li class="checkoutModal"><a href="moviePage.html" class="btn btn-primary checkoutModal" onclick="hideCheckout('moviePage.html')">Add a Movie</a></li>
+                                <li class="checkoutModal"><a href="concessionPage.html#popcornAnchor" class="btn btn-primary checkoutModal" onclick="hideCheckout('concessionPage.html#popcornAnchor')">Add Popcorn</a></li>
+                                <li class="checkoutModal"><a href="concessionPage.html#drinkAnchor" class="btn btn-primary checkoutModal" onclick="hideCheckout('concessionPage.html#drinkAnchor')">Add a Drink</a></li>
+                                <li class="checkoutModal"><a href="concessionPage.html#comboAnchor" class="btn btn-primary checkoutModal" onclick="hideCheckout('concessionPage.html#comboAnchor')">Add a Combo</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div style="float:right;">
+                        <b>
+                            <h3 id="total">Total: $</h3>
+                        </b>
+                        <button type="button" class="btn btn-info checkout checkoutModal" onclick="proceedToCheckout()">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="purchasingSummaryModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Purchasing Summary</h2>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <div class="modalScrollMenu" style="height:200px;">
+                            <div id="shoppingCartPurchase"></div>
+                        </div>
+                        <br>
+                        <div class="panel" id="purchaseTotal">
+                            <div class="panel-body"><strong>Total: </strong>$</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Container to show payment options-->
+                    <div class="container-fluid" id="paymentOptions">
+                        <div class="panel-heading"><strong>Payment Options:</strong></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel-body" id="cardName">
+                                    <div class="form-group">
+                                        <label for="name">Name on card:</label>
+                                        <input type="text" class="form-control" placeholder="John Doe" id="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel-body" id="cardNumber">
+                                    <div class="form-group">
+                                        <label for="card">Card number:</label>
+                                        <input type="text" class="form-control" placeholder="1234-5678-9123-4567" id="card">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel-body" id="expDate">
+                                    <div class="form-group">
+                                        <label for="expDate">Expiry date:</label>
+                                        <div class="expDateOptions">
+                                            <select class="form-control" id="expDateOptions">
+                                                <option>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                            <select class="form-control" id="expDateOptions">
+                                                <option>2018</option>
+                                                <option>2019</option>
+                                                <option>2020</option>
+                                                <option>2021</option>
+                                                <option>2022</option>
+                                                <option>2023</option>
+                                                <option>2024</option>
+                                                <option>2025</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info back" onclick="backToCart()">Back</button>
+                    <button type="button" class="btn btn-default" onclick="completePurchase()"><strong>Place Your Order</strong></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+
+sidebar {
+	float:left;
+	width: 150px;
+	background:  #d9d9d9;
+}
+
+picker {
+	float: left;
+	width: 300px;
+	padding-left: 40px;
+}
+
+footer {
+	padding-top: 425px;
+	padding-left: 770px;
+}
+
+exit {
+	padding-left: 695px;
+}
+
+div.modal-content{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    border: none;
+}
+
+.modal-dialog{
+
+    width: 100%;
+    overflow-x: auto;
+    overflow-wrap: auto;
+    background-color: white;
+}
+
+
+
+.theatre {
+	position: fixed;
+}
+
+
+.screen {
+	color: #959595;
+	border-left:  3px solid #959595;
+	border-right: 3px solid #959595;
+	border-bottom: 3px solid #959595;
+	text-align: center;
+	width: 600px;
+}
+
+
+.seat {
+	display: flex;
+	padding: 35px;
+	position: relative;
+
+}
+
+.seat input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.seatImage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	font-size: 18px;
+	line-height: 50px;
+	background-color: #eee;
+}
+
+.seat:hover input ~ .seatImage{
+	background-color: #b3b3b3;
+}
+
+.seat input:checked ~ .seatImage {
+	background-color:  #33cc33;
+}
+
+.seat input:disabled ~.seatImage {
+	background-color:  #ff0000;
+	cursor: not-allowed;
+}
+
+.handiSeat{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	font-size: 18px;
+	line-height: 50px;
+	background-color:  #3366ff;
+}
+
+.seat:hover input ~ .handiSeat{
+	background-color:  #0033cc;
+}
+
+.seat input:checked ~.handiSeat{
+	background-color:  #33cc33;
+}
+
+.seat input:disabled ~.handiSeat {
+	background-color: #ff0000;
+}
+
+
+.seats {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+
+.cartButton{
+	background-color: #00b300;
+	height: 40px;
+	color: white;
+}
+
+.cartButton:hover {
+	background-color:  green;
+	color: white;
+}
+
+.exitButton {
+	color: red;
+	font-size: 20px;
+	background-color: #ffffff;
+	border: none;
+}
+
+li {
+	list-style: none;
+}
+
+.title {
+	font-size: 35px;
+	padding-left: 25px;
+	padding-bottom: 0px;
+	color: red;
+}
+
+.moviePoster{
+	float: left;
+	padding-left: 20px;
+	margin: 16px;
+}
+
+.movieTitle {
+	float: left;
+}
+
+.movieDescription {
+
+}
+
+.movieDetails {
+
+}
+
+.theatreSpinner{
+
+}
+
+.dateSpinner{
+	float: left;
+	padding-left: 300px;
+	border: solid 4px #ffffff;
+}
+
+.timeSpinner{
+
+}
+
+.viewSeats {
+	margin: 16px;
+}
+
+.viewSeatsBtn {
+	background-color: #ffffff;
+	border: solid 4px #000000;
+	height: 40px;
+}
+
+.viewSeatsBtn:hover {
+	background-color:  #d9d9d9;
+}
+
+.timeButton {
+	padding-left: 625px;
+}
+
+.viewTimeBtn {
+	background-color: #ffffff;
+	border: solid 4px #000000;
+	font-size: 20px;
+}
+
+.viewTimeBtn:hover {
+	background-color:  #d9d9d9;
+}

@@ -1,0 +1,163 @@
+
+h3{
+  margin-top: 0;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.concession-info button{
+  background-color: #00b300;
+}
+
+.concession-info button:hover{
+  background-color: green;
+}
+
+.concession-info button:active, .concession-info button:focus, .concession-info button:active:focus{
+  color: white;
+  background-color: green;
+  border-color: green;
+}
+
+.concession-info li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.individual-theatre, .individual-Movie, .individual-concession{
+    border-style: ridge;
+    overflow: auto;
+    padding: 2% 2% 2% 2%;
+    margin: 2% 2% 2% 2%;
+}
+
+.theatre-image{
+  width: 50%;
+  height: auto;
+  float: left;
+}
+
+.theatre-info{
+  padding: 2% 2% 2% 2%;
+  width: 50%;
+  height: 10%;
+  float: right;
+}
+
+.movie-info{
+  padding: 2% 2% 2% 2%;
+  width: 70%;
+  height: 10%;
+  float: right;
+}
+
+.movie-image{
+  width: 30%;
+  height: auto;
+  float: left;
+}
+
+.concession-image{
+  width: 40%;
+  height: auto;
+  float: left;
+}
+
+.concession-info{
+  padding: 2% 2% 2% 2%;
+  width: 20%;
+  height: 10%;
+  float: left;
+}
+
+/*
+.input-group, .form-control{
+  width:auto;
+}*/
+
+.quantity-adjuster{
+  padding: 0% 10% 10% 0%;
+}
+
+.quantity-adjuster .count {
+    color: black;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 2px;
+    min-width: 35px;
+    text-align: center;
+}
+.quantity-adjuster .plus, .quantity-adjuster .minus{
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    background: black;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    }
+
+.minus:hover{
+    background-color: grey;
+}
+.plus:hover{
+    background-color: grey;
+}
+
+input{
+    border: 0;
+    width: 2%;
+}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* width */
+.scrollmenu::-webkit-scrollbar {
+    height: 10px;
+}
+
+/* Track */
+.scrollmenu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.scrollmenu::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.scrollmenu::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+div.scrollmenu {
+    height: 50%;
+    height: auto;
+    border-style: ridge;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu img {
+    height:auto;
+    width: 20%;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu img:hover {
+    background-color: #777;
+}

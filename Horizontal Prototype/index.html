@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Movie Master</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="ShoppingCart.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">Movie Master</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="theatrePage.html">Theatres</a></li>
+                <li><a href="moviePage.html">Movies</a></li>
+                <li><a href="concessionPage.html">Concessions</a></li>
+            </ul>
+
+            <!-- For the Signup and Login nav bar. No html link included yet -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a data-toggle="modal" href="#checkOutModal"><span class="glyphicon glyphicon-shopping-cart"></span> Your Cart</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Movie Master</h2>
+        <hr>
+
+        <h3><b>Featured Movies</b></h3>
+        <div class="scrollmenu">
+            <a href="./grinchSeatSelect.html"><img src="Images/theGrinchImg.jpg" alt=TheGinchMoviePoster></a>
+            <a href="./shrekSeatSelect.html"><img src="Images/shrekImg.jpg" alt=ShrekMoviePoster></a>
+            <img src="Images/theShiningImg.jpg" alt=TheShiningMoviePoster>
+            <img src="Images/harryPotter1Img.jpg" alt=HarryPotter1MoviePoster>
+            <img src="Images/harryPotter2Img.jpg" alt=HarryPotter2MoviePoster>
+            <img src="Images/harryPotter3Img.jpg" alt=HarryPotter3MoviePoster>
+            <img src="Images/harryPotter4Img.jpg" alt=HarryPotter4MoviePoster>
+            <img src="Images/harryPotter5Img.jpg" alt=HarryPotter5MoviePoster>
+            <img src="Images/harryPotter6Img.jpg" alt=HarryPotter6MoviePoster>
+            <img src="Images/harryPotter7Img.jpg" alt=HarryPotter7MoviePoster>
+            <img src="Images/harryPotter8Img.jpg" alt=HarryPotter8MoviePoster>
+        </div><br>
+
+        <h3><b>Popular Theatres</b></h3>
+        <div class="scrollmenu">
+            <div class="movie-theatres">
+                <img src="Images/cineplexOdeonTheatreImg.jpg" alt=cineplexOdeonTheatreImg>
+                <img src="Images/scotiabankTheatreImg.jpg" alt=scotiabankTheatreImg>
+                <img src="Images/landMarkTheatreImg.jpg" alt=landMarkTheatreImg>
+                <img src="Images/stVitalTheatreImg.jpg" alt=stVitalTheatreImg>
+            </div>
+        </div><br>
+
+    </div>
+
+    <div class="modal fade" id="checkOutModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">Your Cart</h2>
+                </div>
+                <div class="modal-body">
+                    <div id="shoppingCart" class="modalScrollMenu checkoutModal" style="height:250px;"></div>
+                    <div>
+                        <div>
+                            <ul class="checkoutModal">
+                                <li class="checkoutModal"><a href="moviePage.html" class="btn btn-primary checkoutModal" onclick="hideCheckout('moviePage.html')">Add a Movie</a></li>
+                                <li class="checkoutModal"><a href="concessionPage.html#popcornAnchor" class="btn btn-primary checkoutModal" onclick="hideCheckout('concessionPage.html#popcornAnchor')">Add Popcorn</a></li>
+                                <li class="checkoutModal"><a href="concessionPage.html#drinkAnchor" class="btn btn-primary checkoutModal" onclick="hideCheckout('concessionPage.html#drinkAnchor')">Add a Drink</a></li>
+                                <li class="checkoutModal"><a href="concessionPage.html#comboAnchor" class="btn btn-primary checkoutModal" onclick="hideCheckout('concessionPage.html#comboAnchor')">Add a Combo</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div style="float:right;">
+                        <b><h3 id="total">Total: $</h3></b>
+                        <button type="button" class="btn btn-info checkout checkoutModal" onclick="proceedToCheckout()">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="purchasingSummaryModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Purchasing Summary</h2>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <div class="modalScrollMenu checkoutModal" style="height:200px;">
+                            <div id="shoppingCartPurchase"></div>
+                        </div>
+                        <br>
+                        <div class="panel" id="purchaseTotal">
+                            <div class="panel-body"><strong>Total: </strong>$</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Container to show payment options-->
+                    <div class="container-fluid" id="paymentOptions">
+                        <div class="panel-heading"><strong>Payment Options:</strong></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel-body" id="cardName">
+                                    <div class="form-group">
+                                        <label for="name">Name on card:</label>
+                                        <input type="text" class="form-control" placeholder="John Doe" id="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel-body" id="cardNumber">
+                                    <div class="form-group">
+                                        <label for="card">Card number:</label>
+                                        <input type="text" class="form-control" placeholder="1234-5678-9123-4567" id="card">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="panel-body" id="expDate">
+                                    <div class="form-group">
+                                        <label for="expDate">Expiry date:</label>
+                                        <div class="expDateOptions">
+                                            <select class="form-control" id="expDateOptions">
+                                                <option>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                            </select>
+                                            <select class="form-control" id="expDateOptions">
+                                                <option>2018</option>
+                                                <option>2019</option>
+                                                <option>2020</option>
+                                                <option>2021</option>
+                                                <option>2022</option>
+                                                <option>2023</option>
+                                                <option>2024</option>
+                                                <option>2025</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info back" onclick="backToCart()">Back</button>
+                    <button type="button" class="btn btn-default" onclick="completePurchase()"><strong>Place Your Order</strong></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
